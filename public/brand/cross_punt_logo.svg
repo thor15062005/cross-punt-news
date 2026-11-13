@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-label="Cross Punt logo">
+<g transform="translate(28 12)">
+<g fill="none" stroke="#B89B6F" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="134" cy="285" r="83"/><circle cx="375" cy="285" r="83"/>
+<path d="M134 285L229 174 288 285 134 285 215 211 375 285 319 164 229 174"/>
+</g>
+<g fill="none" stroke="#F4EFE6" stroke-width="17" stroke-linecap="round" stroke-linejoin="round">
+<path d="M232 87l51 23 30 56-44 13-56-52-51 40"/>
+<path d="M269 180l-49 63-47 38M307 166l51 65 45 22"/>
+<path d="M164 167l-43 17M305 167l41-11"/>
+</g>
+<path fill="#F4EFE6" d="M204 67c6-31 44-46 68-25 13 11 17 28 11 43l-23 17-41-10z"/>
+<path fill="none" stroke="#0B0B0B" stroke-width="7" d="M211 65l64 14M237 40l-5 56M260 44l-9 52"/>
+<path fill="#F4EFE6" d="M222 104l-40 17-27 44 38 17 42-44 39 18 23-34-41-28z"/>
+<g fill="#B89B6F" opacity=".9"><circle cx="71" cy="358" r="7"/><circle cx="102" cy="378" r="5"/><circle cx="148" cy="390" r="9"/><circle cx="199" cy="379" r="5"/><circle cx="259" cy="380" r="7"/><circle cx="322" cy="387" r="5"/><circle cx="397" cy="371" r="8"/><circle cx="446" cy="348" r="5"/></g>
+</g>
+<g font-family="Impact, 'Arial Narrow', sans-serif" font-weight="900" font-style="italic" letter-spacing="-4">
+<text x="485" y="193" font-size="154" fill="#F4EFE6">CROSS</text>
+<text x="485" y="343" font-size="154" fill="#B89B6F">PUNT</text>
+</g>
+</svg>
