@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { featuredArticles } from '@/lib/content';
+import { getArticles } from '@/lib/content';
 
-export default function HomePage() {
-  const [lead, ...rest] = featuredArticles;
+export default async function HomePage() {
+  const [lead, ...rest] = (await getArticles()).slice(0, 3);
 
   return (
     <>
@@ -16,7 +16,7 @@ export default function HomePage() {
             <Link href="/">Home</Link>
             <Link href="/articles">Artikelen</Link>
             <Link href="/about">Over ons</Link>
-            <Link href="/keystatic">Keystatic</Link>
+            {process.env.NODE_ENV === 'development' && <Link href="/keystatic">Keystatic</Link>}
           </nav>
         </div>
       </header>
@@ -36,7 +36,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="page-shell">
+        {rest.length > 0 && <section className="page-shell">
           <div className="container">
             <div className="section-header">
               <h2>Featured</h2>
@@ -62,9 +62,9 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-        </section>
+        </section>}
 
-        <section className="page-shell">
+        {lead && <section className="page-shell">
           <div className="container">
             <div className="section-header">
               <h2>Vandaag bij Cross Punt</h2>
@@ -85,7 +85,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-        </section>
+        </section>}
       </main>
 
       <footer className="footer">

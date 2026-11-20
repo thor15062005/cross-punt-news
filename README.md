@@ -11,13 +11,12 @@ npm run dev
 
 Then open http://localhost:3000 in the browser.
 
-## Required environment variables
+## Editing articles
 
-The project includes a `.env.example` file for the deployed GitHub-authenticated Keystatic setup:
+Open http://localhost:3000/keystatic while the development server is running.
+The editor saves articles to `content/articles`. The home page, article
+overview, and article detail pages read from those files. Commit the article
+changes and redeploy to publish them.
 
-- `KEYSTATIC_GITHUB_CLIENT_ID`
-- `KEYSTATIC_GITHUB_CLIENT_SECRET`
-- `KEYSTATIC_SECRET`
-- `NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG`
-
-Keep these values in a local `.env` file only on the deployment platform or in a secure environment. Do not commit secrets.
+The editor uses local storage and is available during development. Editing on
+a deployed site requires a separate GitHub storage configuration.

@@ -13,7 +13,7 @@ export default function AboutPage() {
             <Link href="/">Home</Link>
             <Link href="/articles">Artikelen</Link>
             <Link href="/about">Over ons</Link>
-            <Link href="/keystatic">Keystatic</Link>
+            {process.env.NODE_ENV === 'development' && <Link href="/keystatic">Keystatic</Link>}
           </nav>
         </div>
       </header>

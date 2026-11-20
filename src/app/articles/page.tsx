@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import { articles } from '@/lib/content';
+import { getArticles } from '@/lib/content';
 
-export default function ArticlesPage() {
+export default async function ArticlesPage() {
+  const articles = await getArticles();
   return (
     <>
       <header className="site-header">
@@ -14,7 +15,7 @@ export default function ArticlesPage() {
             <Link href="/">Home</Link>
             <Link href="/articles">Artikelen</Link>
             <Link href="/about">Over ons</Link>
-            <Link href="/keystatic">Keystatic</Link>
+            {process.env.NODE_ENV === 'development' && <Link href="/keystatic">Keystatic</Link>}
           </nav>
         </div>
       </header>

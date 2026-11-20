@@ -1,18 +1,17 @@
-import { config, fields } from '@keystatic/core';
+import { collection, config, fields } from '@keystatic/core';
 
 export default config({
   storage: {
     kind: 'local'
   },
   collections: {
-    posts: {
+    posts: collection({
       label: 'Articles',
-      slugField: 'slug',
+      slugField: 'title',
       path: 'content/articles/*',
       format: { contentField: 'content' },
       schema: {
-        slug: fields.slug({ name: { label: 'Slug' } }),
-        title: fields.text({ label: 'Title', validation: { isRequired: true } }),
+        title: fields.slug({ name: { label: 'Title', validation: { isRequired: true } } }),
         summary: fields.text({ label: 'Summary', multiline: true, validation: { isRequired: true } }),
         author: fields.text({ label: 'Author', defaultValue: 'Redactie Cross Punt' }),
         category: fields.select({
@@ -25,8 +24,10 @@ export default config({
           defaultValue: 'Nieuws'
         }),
         publishedAt: fields.date({ label: 'Published at', defaultValue: { kind: 'today' } }),
+        readTime: fields.integer({ label: 'Reading time in minutes', defaultValue: 1, validation: { min: 1, isRequired: true } }),
+        hero: fields.url({ label: 'Cover image URL' }),
         content: fields.markdoc({ label: 'Content' })
       }
-    }
+    })
   }
 });

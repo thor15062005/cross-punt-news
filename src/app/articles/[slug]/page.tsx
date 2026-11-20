@@ -1,14 +1,16 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { articles, getArticleBySlug } from '@/lib/content';
+import Markdoc from '@markdoc/markdoc';
+import React from 'react';
+import { getArticles, getArticleBySlug } from '@/lib/content';
 
 export async function generateStaticParams() {
-  return articles.map((article) => ({ slug: article.slug }));
+  return (await getArticles()).map((article) => ({ slug: article.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const article = await getArticleBySlug(slug);
 
   if (!article) {
     return {
@@ -24,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const article = await getArticleBySlug(slug);
 
   if (!article) {
     return (
@@ -36,6 +38,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       </main>
     );
   }
+
+  const { node } = await article.content();
 
   return (
     <>
@@ -49,7 +53,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             <Link href="/">Home</Link>
             <Link href="/articles">Artikelen</Link>
             <Link href="/about">Over ons</Link>
-            <Link href="/keystatic">Keystatic</Link>
+            {process.env.NODE_ENV === 'development' && <Link href="/keystatic">Keystatic</Link>}
           </nav>
         </div>
       </header>
@@ -68,14 +72,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
           <div className="article-hero" style={{ backgroundImage: `url(${article.hero})` }} />
 
-          {article.content.map((section) => (
-            <section key={section.heading}>
-              <h2>{section.heading}</h2>
-              {section.body.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </section>
-          ))}
+          {Markdoc.renderers.react(Markdoc.transform(node), React)}
         </article>
       </main>
 
