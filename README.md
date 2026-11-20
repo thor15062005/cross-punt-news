@@ -11,12 +11,21 @@ npm run dev
 
 Then open http://localhost:3000 in the browser.
 
-## Editing articles
+## Editing articles with GitHub
 
-Open http://localhost:3000/keystatic while the development server is running.
-The editor saves articles to `content/articles`. The home page, article
-overview, and article detail pages read from those files. Commit the article
-changes and redeploy to publish them.
+Open http://127.0.0.1:3000/keystatic while the development server is running.
+On first use, select **Create GitHub App** and install the app with access to
+`thor15062005/cross-punt-news`. Keystatic writes its app settings to the ignored
+`.env` file. Editors sign in with a GitHub account that has write access to the
+repository.
 
-The editor uses local storage and is available during development. Editing on
-a deployed site requires a separate GitHub storage configuration.
+Keystatic saves article edits to `content/articles` on the selected GitHub
+branch. The public site reads the files from its checkout. Pull changes to see
+them locally and deploy the branch that contains the published changes.
+
+For a deployed editor, use a Node.js host and set the four variables from
+`.env.example` in the hosting environment before building and deploying. Add
+`https://<site-host>/api/keystatic/github/oauth/callback` to the GitHub App's
+callback URLs. Keep the app credentials in the environment.
+
+See the [Keystatic GitHub setup guide](https://keystatic.com/docs/github-mode).

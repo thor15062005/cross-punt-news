@@ -1,0 +1,12 @@
+diff --git a/node_modules/@keystatic/core/dist/keystatic-core-ui.js b/node_modules/@keystatic/core/dist/keystatic-core-ui.js
+--- a/node_modules/@keystatic/core/dist/keystatic-core-ui.js
++++ b/node_modules/@keystatic/core/dist/keystatic-core-ui.js
+@@ -7719,7 +7719,7 @@
+   let t11;
+   if ($[14] !== t10) {
+     t11 = /*#__PURE__*/jsx("input", {
+-      type: "text",
++      type: "hidden",
+       name: "manifest",
+       className: t9,
+       value: t10

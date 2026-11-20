@@ -1,0 +1,11 @@
+diff --git a/node_modules/@keystar/ui/dist/keystar-ui-menu.js b/node_modules/@keystar/ui/dist/keystar-ui-menu.js
+--- a/node_modules/@keystar/ui/dist/keystar-ui-menu.js
++++ b/node_modules/@keystar/ui/dist/keystar-ui-menu.js
+@@ -252,6 +252,7 @@
+   if ($[23] !== t6 || $[24] !== t7 || $[25] !== descriptionProps || $[26] !== keyboardShortcutProps || $[27] !== labelProps || $[28] !== isHovered || $[29] !== isFocusVisible || $[30] !== isSelected || $[31] !== ref || $[32] !== contents) {
+     t8 = /*#__PURE__*/jsx(ListItem, {
+       ...t6,
++      href: t7 === "a" ? t6.href : undefined,
+       elementType: t7,
+       descriptionProps: descriptionProps,
+       keyboardShortcutProps: keyboardShortcutProps,
